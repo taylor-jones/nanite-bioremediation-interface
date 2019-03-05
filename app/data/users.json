@@ -1,0 +1,22 @@
+[
+	{
+		"user_id": 1,
+		"user_name": "michaelscott",
+		"user_password": "#1boss"
+	},
+	{
+		"user_id": 2,
+		"user_name": "jimhalpert",
+		"user_password": "bookface"
+	},
+	{
+		"user_id": 3,
+		"user_name": "pambeasley",
+		"user_password": "pampam"
+	},
+	{
+		"user_id": 4,
+		"user_name": "dwightschrute",
+		"user_password": "beets"
+	}
+]
