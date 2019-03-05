@@ -20,7 +20,7 @@ Hopefully, we're finding a common ground without too much of a learning curve fo
 <br><hr><br>
 
 ## Setup
-Make sure you have npm or yarn installed. Then, after cloning the repo, run:
+Make sure you have [npm](https://www.npmjs.com/get-npm) or [yarn](https://yarnpkg.com/en/) installed. Then, after cloning the repo, run (from within the cloned directory):
 ```
 cd app
 npm install
@@ -43,12 +43,10 @@ npm i -g gulp-cli
 
 You can then just use the following command to run the application with live-reloading:
 ```
+cd app
 gulp
 ```
-At that point, the app can be accessed at 
-```
-localhost:7000
-```
+At that point, the app can be accessed at [http://localhost:7000](http://localhost:7000)
 
 
 <br>
@@ -63,10 +61,7 @@ or
 ```
 yarn start
 ```
-Using this method, the app is at
-```
-localhost:5000
-```
+Using this method, the app is at [http://localhost:5000](http://localhost:5000)
 
 <br><hr><br>
 
@@ -75,4 +70,4 @@ If you'd like to serve the app using _forever_, then you can run:
 ```
 npm run forever
 ```
-...and the app will start on localhost:5000.
+...and the app will start on [http://localhost:5000](http://localhost:5000)
