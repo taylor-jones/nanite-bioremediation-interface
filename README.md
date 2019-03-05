@@ -35,7 +35,7 @@ If you'd like, you can make use of live-reloading. In order to use this, you jus
 npm i -g gulp-cli
 ```
 
-You can then just run the following to run the application with live-reloading:
+You can then just use the following command to run the application with live-reloading:
 ```
 gulp
 ```
@@ -44,7 +44,7 @@ gulp
 <br>
 
 ### Without Live Reloading
-If you don't want to install gulp-cli, you can run the following to run the appllication without live-reloading:
+If you don't want to install gulp-cli, you can use one of the following commands to run the appllication without live-reloading:
 
 ```
 npm start
