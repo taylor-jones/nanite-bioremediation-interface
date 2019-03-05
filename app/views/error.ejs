@@ -1,3 +1,15 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include partials/pageStyles %>
+  </head>
+  <body>
+    <div class="container mt-4">
+      <h1><%= message %></h1>
+      <h2><%= error.status %></h2>
+      <pre><%= error.stack %></pre>
+    </div>
+
+    <% include partials/pageScripts %>
+  </body>
+</html>
