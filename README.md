@@ -39,6 +39,10 @@ You can then just use the following command to run the application with live-rel
 ```
 gulp
 ```
+At that point, the app can be accessed at 
+```
+localhost:7000
+```
 
 
 <br>
@@ -52,4 +56,8 @@ npm start
 or
 ```
 yarn start
+```
+Using this method, the app is at
+```
+localhost:5000
 ```
