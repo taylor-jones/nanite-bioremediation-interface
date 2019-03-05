@@ -9,9 +9,15 @@ Hopefully, we're finding a common ground without too much of a learning curve fo
 - Express
 - EJS
 - Bootstrap
+- jQuery (because of bootstrap)
 
 
 <br>
+
+**NOTE:** [There's a task list here](https://github.com/taylor-jones/cs361-bioremediation/projects/1) that we can use to keep track of our progress, if you all would like.
+
+
+<br><hr><br>
 
 ## Setup
 Make sure you have npm or yarn installed. Then, after cloning the repo, run:
@@ -25,7 +31,7 @@ cd app
 yarn install
 ```
 
-<br>
+<br><hr><br>
 
 ## Developing
 ### Live Reloading
@@ -62,7 +68,7 @@ Using this method, the app is at
 localhost:5000
 ```
 
-<br>
+<br><hr><br>
 
 ## Serving
 If you'd like to serve the app using _forever_, then you can run:
