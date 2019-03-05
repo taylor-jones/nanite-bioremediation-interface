@@ -61,3 +61,12 @@ Using this method, the app is at
 ```
 localhost:5000
 ```
+
+<br>
+
+## Serving
+If you'd like to serve the app using _forever_, then you can run:
+```
+npm run forever
+```
+...and the app will start on localhost:5000.
