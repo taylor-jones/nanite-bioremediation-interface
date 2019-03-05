@@ -13,5 +13,9 @@
     "http-errors": "~1.6.2",
     "morgan": "~1.9.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "gulp": "^4.0.0",
+    "gulp-nodemon": "^2.4.2"
+  }
 }
