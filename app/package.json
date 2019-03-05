@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "forever": "./node_modules/forever/bin/forever ./bin/www"
+    "forever": "./node_modules/forever/bin/forever start ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
