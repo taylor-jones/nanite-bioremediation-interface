@@ -16,7 +16,10 @@ router.post('/', (req, res, next) => {
   // check if the user login credentials are valid
   const users = helpers.sanitizeJSON(userData);
   const { user_name: uname, user_password: upass } = req.body;
-  const isValidUser = Object.values(users).some(user => user.user_name === uname && user.user_password === upass);
+
+  const userList = Object.keys(users).map(user => users[user]);
+  const isValidUser = userList.some(user => user.user_name === uname && user.user_password === upass);
+
 
   // if the user login was successful, setup the user session
   if (isValidUser) {
