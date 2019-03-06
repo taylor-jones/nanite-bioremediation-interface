@@ -25,7 +25,12 @@ router.post('/', (req, res, next) => {
   if (isValidUser) {
     req.session.cookie.maxAge = 60 * 60 * 1000;
     req.session.user = uname;
-    res.redirect('../');
+    res.render('index', {
+      title: 'Home',
+      success: true,
+      response: 'Login successful!',
+      session: req.session,
+    });
   } else {
     res.render('login', {
       title: 'Login',

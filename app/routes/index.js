@@ -13,7 +13,7 @@ router.get('/', (req, res, next) => {
 
 /**
  * Process a user logout.
- * Destroy the session and redirect to the home page.
+ * Destroy the session and redirect to the login page.
  */
 router.get('/logout', (req, res, next) => {
   req.session.destroy();
