@@ -1,0 +1,136 @@
+{
+  "1": {
+    "user": {
+      "email": "michaelscott@dundermifflin.com",
+      "code_device": "Android 1",
+      "permanent_code:": "abYX1nm34!m&5"
+    },
+    "history": {
+      "local_count": 100,
+      "local_format": "PDF",
+      "storage_location": "C:\Users\michael\TINYROBOTS\history",
+      "download_directory": "C:\Users\michael\Downloads"
+    },
+    "system": {
+      "time_zone": "PST",
+      "updates_enabled": true,
+      "localization_enabled": true
+    },
+    "mapping": {
+      "gpu": true,
+      "quality": "medium",
+      "color": true
+    },
+    "nanite": {
+      "my_drivers": [
+        "magnanite1.0",
+        "radio_swarm1.5"
+      ],
+      "my_algos": [
+        "beeswarm10",
+        "ant-cleaner0.5"
+      ],
+      "driver_storage": "C:\Users\michael\TINYROBOTS\drivers"
+    }
+  },
+  "2": {
+    "user": {
+      "email": "jim@osu.com",
+      "code_device": "IOS",
+      "permanent_code:": "fuufi2019"
+    },
+    "history": {
+      "local_count": 20,
+      "local_format": "PDF",
+      "storage_location": "C:\Users\jim\NanoRobots\history",
+      "download_directory": "C:\Users\jim\Downloads"
+    },
+    "system": {
+      "time_zone": "PST",
+      "updates_enabled": true,
+      "localization_enabled": false
+    },
+    "mapping": {
+      "gpu": true,
+      "quality": "high",
+      "color": true
+    },
+    "nanite": {
+      "my_drivers": [
+        "magnanite1.3",
+        "radio_swarm1.5"
+      ],
+      "my_algos": [
+        "beeswarm10",
+        "ant-cleaner0.5"
+      ],
+      "driver_storage": "C:\Users\jim\NanoRobots\drivers"
+    }
+  },
+  "3": {
+    "user": {
+      "email": "pam@jetbrainsextended.com",
+      "code_device": "Android",
+      "permanent_code:": "fas%*ontwesoe20"
+    },
+    "history": {
+      "local_count": 100,
+      "local_format": "PDF",
+      "storage_location": "C:\Users\pam\Nanos\history",
+      "download_directory": "C:\Users\pam\Downloads"
+    },
+    "system": {
+      "time_zone": "PST",
+      "updates_enabled": false,
+      "localization_enabled": false
+    },
+    "mapping": {
+      "gpu": true,
+      "quality": "medium",
+      "color": true
+    },
+    "nanite": {
+      "my_drivers": [
+        "magnanite1.0",
+        "radio_swarm1.5"
+      ],
+      "my_algos": [
+        "beeswarm10",
+        "ant-cleaner0.5"
+      ],
+      "driver_storage": "C:\Users\jim\Nanos\drivers"
+    }
+  },
+  "4": {
+    "user": {
+      "email": "dwight@ultra-secure-emails.com",
+      "code_device": "Blackberry 2",
+      "permanent_code:": "donthackmeJIM!!11!!1!!!!345lxyz"
+    },
+    "history": {
+      "local_count": 100,
+      "local_format": "XML",
+      "storage_location": "C:\Users\Dwight\Minions\history",
+      "download_directory": "C:\Users\Dwight\Downloads"
+    },
+    "system": {
+      "time_zone": "GMT",
+      "updates_enabled": true,
+      "localization_enabled": false
+    },
+    "mapping": {
+      "gpu": false,
+      "quality": "low",
+      "color": false
+    },
+    "nanite": {
+      "my_drivers": [
+        "ultra-nanite-1.0"
+      ],
+      "my_algos": [
+        "super_swarm_2.5"
+      ],
+      "driver_storage": "C:\Users\Dwight\Minions\drivers"
+    }
+  }
+}
