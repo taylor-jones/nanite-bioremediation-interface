@@ -1,0 +1,59 @@
+<header class="mb-5">
+  <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white">
+    <a class="navbar-brand" href="/">Bioremediation</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Left-Side Links -->
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto d-md-none d-lg-none">
+
+        <!-- determine these links based on session status -->
+        <% if (locals.session == undefined || !locals.session.user) { %>
+        <li class="nav-item nav-login d-md-none">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
+        <% } else { %>
+
+        <li class="nav-item nav-history">
+          <a class="nav-link" href="/history">Deployment History</a>
+        </li>
+        <li class="nav-item nav-settings">
+          <a class="nav-link" href="/settings">User Settings</a>
+        </li>
+
+        <li class="nav-item nav-logout d-md-none">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+
+
+    <!-- Right-Side links -->
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+
+        <!-- determine these links based on session status -->
+        <% if (locals.session == undefined || !locals.session.user) { %>
+        <li class="nav-item nav-login">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
+        <% } else { %>
+
+        <li class="nav-item nav-history">
+          <a class="nav-link" href="/history">Deployment History</a>
+        </li>
+        <li class="nav-item nav-settings">
+          <a class="nav-link" href="/settings">User Settings</a>
+        </li>
+        <li class="nav-item nav-logout">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+        <% } %>
+
+      </ul>
+    </div>
+  </nav>
+</header>
