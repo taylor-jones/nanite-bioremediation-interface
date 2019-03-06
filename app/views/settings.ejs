@@ -18,15 +18,15 @@
                 <h3>User Settings</h3>
               </div>
               <div class="form-group">
-                <label for="email" class="sr-only">Email</label>
+                <legeng for="email" class="sr-only">Email</legeng>
                 <input type="text" name="email" class="form-control mb-2" value=<%= settings.user.email %> required autofocus>
               </div>
               <div class="form-group">
-                <label for="code_device" class="sr-only">Secondary Auth Device</label>
+                <legend for="code_device" class="sr-only">Secondary Auth Device</legend>
                 <input type="text" name="code_device" class="form-control" value=<%= settings.user.code_device %> required>
               </div>
               <div class="form-group">
-                <label for="permanent_code" class="sr-only">Authentication Code</label>
+                <legend for="permanent_code" class="sr-only">Authentication Code</legend>
                 <input type="text" name="permanent_code" class="form-control" value=<%= settings.user.permanent_code %> required>
               </div>
 
@@ -34,19 +34,19 @@
                 <h3>History Settings</h3>
               </div>
               <div class="form-group">
-                <label for="local_count" class="sr-only">Deployments Saved Locally</label>
+                <legend for="local_count" class="sr-only">Deployments Saved Locally</legend>
                 <input type="number" name="local_count" class="form-control" value=<%= settings.history.local_count%> required>
               </div>
               <div class="form-group">
-                <label for="local_format" class="sr-only">Deployment Save Format</label>
+                <legend for="local_format" class="sr-only">Deployment Save Format</legend>
                 <input type="text" name="local_format" class="form-control" value=<%= settings.history.local_format %> required>
               </div>
               <div class="form-group">
-                <label for="storage_location" class="sr-only">Deployment Save Location</label>
+                <legend for="storage_location" class="sr-only">Deployment Save Location</legend>
                 <input type="text" name="storage_location" class="form-control" value=<%= settings.history.storage_location %> required>
               </div>
               <div class="form-group">
-                <label for="download_location" class="sr-only">Download Location</label>
+                <legend for="download_location" class="sr-only">Download Location</legend>
                 <input type="text" name="download_location" class="form-control" value=<%= settings.history.download_directory %> required>
               </div>
 
@@ -54,16 +54,16 @@
                 <h3>System Settings</h3>
               </div>
               <div class="form-group">
-                <label for="time_zone" class="sr-only">Time Zone</label>
+                <legend for="time_zone" class="sr-only">Time Zone</legend>
                 <br />
                 <input type="range" min="-11" max="14" name="time_zone" class="form-control" value=<%= settings.history.local_count %> required>
               </div>
               <div class="form-group">
-                <label for="updates_enabled" class="sr-only">Enable Periodic Automatic Updates</label>
+                <legend for="updates_enabled" class="sr-only">Enable Periodic Automatic Updates</legend>
                 <input type="checkbox" name="updates_enabled" class="form-control" <%if (settings.system.updates_enabled == true) { %> checked <% } %> required>
               </div>
               <div class="form-group">
-                <label for="localization_enabled" class="sr-only">Location On</label>
+                <legend for="localization_enabled" class="sr-only">Location On</legend>
                 <input type="checkbox" name="localization_enabled" class="form-control" <%if (settings.system.localization_enabled == true) { %> checked <% } %> required>
               </div>
 
@@ -75,7 +75,7 @@
                 <h3>Nanite Settings</h3>
               </div>
               <div class="form-group">
-                <label for="drivers" class="sr-only">My Drivers</label>
+                <legend for="drivers" class="sr-only">My Drivers</legend>
                 <input type="text" name="my_drivers" class="form-control" value=<%= settings.nanite.my_drivers %> required>
               </div>
               <div>
@@ -90,11 +90,11 @@
                 </select>
               </div>
               <div class="form-group">
-                <label for="algos" class="sr-only">My Algos</label>
+                <legend for="algos" class="sr-only">My Algos</legend>
                 <input type="text" name="my_algos" class="form-control" value=<%= settings.nanite.my_algos %> required>
               </div>
               <div class="form-group">
-                <label for="driver_storage" class="sr-only">Driver Location</label>
+                <legend for="driver_storage" class="sr-only">Driver Location</legend>
                 <input type="text" name="driver_storage" class="form-control" value=<%= settings.nanite.driver_storage %> required>
               </div>
 
