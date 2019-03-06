@@ -78,6 +78,17 @@
                 <label for="drivers" class="sr-only">My Drivers</label>
                 <input type="text" name="my_drivers" class="form-control" value=<% settings.nanite.my_drivers %> required>
               </div>
+              <div>
+                <label></label>
+                <select id="my-drivers-select">
+                  <% var driver_options = settings.nanite.my_drivers;
+                  for ( var i = 0; i < driver_options.length; i++ ) {
+                    var selected = ( config[0].volume == i ) ? "selected" : "";
+                  %><option value="<%=driver_options[ i ] %>" <%=selected %>><%=i %></option><%
+                  }
+                  %>
+                </select>
+              </div>
               <div class="form-group">
                 <label for="algos" class="sr-only">My Algos</label>
                 <input type="text" name="my_algos" class="form-control" value=<% settings.nanite.my_algos %> required>

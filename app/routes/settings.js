@@ -45,15 +45,33 @@ router.post('/', (req, res, next) => {
   settings.system.updates_enables = req.body.updates_enables;
   settings.system.localization_enabled = req.body.localization_enabled;
 
+  //parse nanites
+  let naniteSettings = req.body["nanite"];
+  settings.nanite.driver_storage = naniteSettings.driver_storage;
+  /*
+  let driverSettings = naniteSettings.my_drivers;
+  //make string from array
+  let my_drivers = "";
+  driverSettings.forEach(function (item) {
+      my_drivers + item
+      my_drivers + " ";
+  });
+  settings.nanite.my_drivers = my_drivers; */
+  settings.nanite.my_drivers = naniteSettings.my_drivers;
+
+  let my_algos = "";
+
+  settings.nanite.my_algos = naniteSettings.my_algos;
+
   settings.mapping.gpu = req.body.gpu;
   settings.mapping.quality = req.body.quality;
   settings.mapping.color = req.body.color;
 
-  console.log(helpers.sanitizeJSON(req.body));
 
-  settings.nanite.driver_storage = req.body.nanite.driver_storage;
-  settings.nanite.my_drivers = req.body.nanite.my_drivers;
-  settings.nanite.my_algos = req.body.nanite.my_algos;
+
+
+
+  console.log(helpers.sanitizeJSON(req.body));
   //deal with the two arrays and we're done building
 
   // write the json out to the file with the userid
