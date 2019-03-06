@@ -1,0 +1,57 @@
+/* eslint-disable no-undef */
+
+const request = require('supertest');
+const app = require('../app');
+
+//
+// Test Page Navigation
+//
+
+// Root
+describe('Test the root path', () => {
+  test('It should response the GET method', () => {
+    return request(app).get('/').then(response => {
+      expect(response.statusCode).toBe(200);
+    });
+  });
+});
+
+
+// Login
+describe('Test the login path', () => {
+  test('It should response the GET method', () => {
+    return request(app).get('/login').then(response => {
+      expect(response.statusCode).toBe(200);
+    });
+  });
+});
+
+
+// User Settings
+describe('Test the user settings path', () => {
+  test('It should response the GET method', () => {
+    return request(app).get('/settings').then(response => {
+      expect(response.statusCode).toBe(200);
+    });
+  });
+});
+
+
+// User History
+describe('Test the user history path', () => {
+  test('It should response the GET method', () => {
+    return request(app).get('/history').then(response => {
+      expect(response.statusCode).toBe(200);
+    });
+  });
+});
+
+
+// Bogus Route
+describe('Test a non-existing path', () => {
+  test('It should respond with 404', () => {
+    return request(app).get('/bogus').then(response => {
+      expect(response.statusCode).toBe(404);
+    });
+  });
+});
