@@ -4,10 +4,16 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  res.render('index', {
-    title: 'Bioremediation',
-    session: req.session,
-  });
+  if (!req.session || !req.session.expires) {
+    res.render('login', {
+      title: 'Login',
+    });
+  } else {
+    res.render('index', {
+      title: 'Bioremediation',
+      session: req.session,
+    });
+  }
 });
 
 
