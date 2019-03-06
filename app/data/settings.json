@@ -8,8 +8,8 @@
     "history": {
       "local_count": 100,
       "local_format": "PDF",
-      "storage_location": "C:\Users\michael\TINYROBOTS\history",
-      "download_directory": "C:\Users\michael\Downloads"
+      "storage_location": "C:\\Users\\michael\\TINYROBOTS\\history",
+      "download_directory": "C:\\Users\\michael\\Downloads"
     },
     "system": {
       "time_zone": "PST",
@@ -30,7 +30,7 @@
         "beeswarm10",
         "ant-cleaner0.5"
       ],
-      "driver_storage": "C:\Users\michael\TINYROBOTS\drivers"
+      "driver_storage": "C:\\Users\\michael\\TINYROBOTS\\drivers"
     }
   },
   "2": {
@@ -42,8 +42,8 @@
     "history": {
       "local_count": 20,
       "local_format": "PDF",
-      "storage_location": "C:\Users\jim\NanoRobots\history",
-      "download_directory": "C:\Users\jim\Downloads"
+      "storage_location": "C:\\Users\\jim\\NanoRobots\\history",
+      "download_directory": "C:\\Users\\jim\\Downloads"
     },
     "system": {
       "time_zone": "PST",
@@ -64,7 +64,7 @@
         "beeswarm10",
         "ant-cleaner0.5"
       ],
-      "driver_storage": "C:\Users\jim\NanoRobots\drivers"
+      "driver_storage": "C:\\Users\\jim\\NanoRobots\\drivers"
     }
   },
   "3": {
@@ -76,8 +76,8 @@
     "history": {
       "local_count": 100,
       "local_format": "PDF",
-      "storage_location": "C:\Users\pam\Nanos\history",
-      "download_directory": "C:\Users\pam\Downloads"
+      "storage_location": "C:\\Users\\pam\\Nanos\\history",
+      "download_directory": "C:\\Users\\pam\\Downloads"
     },
     "system": {
       "time_zone": "PST",
@@ -98,7 +98,7 @@
         "beeswarm10",
         "ant-cleaner0.5"
       ],
-      "driver_storage": "C:\Users\jim\Nanos\drivers"
+      "driver_storage": "C:\\Users\\jim\\Nanos\\drivers"
     }
   },
   "4": {
@@ -110,8 +110,8 @@
     "history": {
       "local_count": 100,
       "local_format": "XML",
-      "storage_location": "C:\Users\Dwight\Minions\history",
-      "download_directory": "C:\Users\Dwight\Downloads"
+      "storage_location": "C:\\Users\\Dwight\\Minions\\history",
+      "download_directory": "C:\\Users\\Dwight\\Downloads"
     },
     "system": {
       "time_zone": "GMT",
@@ -130,7 +130,7 @@
       "my_algos": [
         "super_swarm_2.5"
       ],
-      "driver_storage": "C:\Users\Dwight\Minions\drivers"
+      "driver_storage": "C:\\Users\\Dwight\\Minions\\drivers"
     }
   }
 }
