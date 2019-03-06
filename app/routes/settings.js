@@ -7,10 +7,13 @@ const helpers = require('../../app/helpers');
 /* GET User Settings page. */
 router.get('/', (req, res, next) => {
   const uname = req.session.user;
-  if (uname == null) res.redirect('/login');
+  if (uname == null) {
+    res.redirect('/login');
+    return;
+  }
 
   const users = helpers.sanitizeJSON(userData);
-  const user = userData.filter(user => user["user_name"] == uname)[0];
+  const user = userData.filter(user => user["user_name"] === uname)[0];
   const settings = helpers.sanitizeJSON(settingsData)[user.user_id];
   res.render('settings', {
     title: 'User Settings',
@@ -21,12 +24,44 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-  // ok so the idea here is to take all of the fields and just reassmble
-  // the map and update it as a blob object
-  let settings = {"user": {"email": req.body.email, ""}};
-  console.log(req.body);
-  console.log(req.body.email);
-  console.log(req.body.code_device);
+  const uname = req.session.user;
+  if (uname == null) res.redirect('/login');
+
+  const users = helpers.sanitizeJSON(userData);
+  const user = userData.filter(user => user["user_name"] == uname)[0];
+  let settings = helpers.sanitizeJSON(settingsData)[user.user_id];
+
+  // set all the settings here
+  settings.user.email = req.body.email;
+  settings.user.code_device = req.body.code_device;
+  settings.user.permanent_code = req.body.permanent_code;
+
+  settings.history.local_count = req.body.local_count;
+  settings.history.local_format = req.body.local_format;
+  settings.history.storage_location = req.body.storage_location;
+  settings.history.download_directory = req.body.download_directory;
+
+  settings.system.time_zone = req.body.time_zone;
+  settings.system.updates_enables = req.body.updates_enables;
+  settings.system.localization_enabled = req.body.localization_enabled;
+
+  settings.mapping.gpu = req.body.gpu;
+  settings.mapping.quality = req.body.quality;
+  settings.mapping.color = req.body.color;
+
+  console.log(helpers.sanitizeJSON(req.body));
+
+  settings.nanite.driver_storage = req.body.driver_storage;
+  //deal with the two arrays and we're done building
+
+  // write the json out to the file with the userid
+
+  res.render('settings', {
+    title: 'User Settings',
+    session: req.session,
+    user_name: req.session.user,
+    settings: settings
+  });
 });
 
 // I'll stay consistent
