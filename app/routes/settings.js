@@ -51,9 +51,9 @@ router.post('/', (req, res, next) => {
 
   console.log(helpers.sanitizeJSON(req.body));
 
-  settings.nanite.driver_storage = req.body.driver_storage;
-  settings.nanite.my_drivers = req.body.my_drivers;
-  settings.nanite.my_algos = req.body.my_algos;
+  settings.nanite.driver_storage = req.body.nanite.driver_storage;
+  settings.nanite.my_drivers = req.body.nanite.my_drivers;
+  settings.nanite.my_algos = req.body.nanite.my_algos;
   //deal with the two arrays and we're done building
 
   // write the json out to the file with the userid
