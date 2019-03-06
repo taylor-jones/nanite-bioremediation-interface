@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
 module.exports = router;
 
 
-/* process user login */
+/* process user login attempt */
 router.post('/', (req, res, next) => {
   // check if the user login credentials are valid
   const users = helpers.sanitizeJSON(userData);

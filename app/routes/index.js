@@ -17,7 +17,11 @@ router.get('/', (req, res, next) => {
  */
 router.get('/logout', (req, res, next) => {
   req.session.destroy();
-  res.redirect('/');
+  res.render('login', {
+    title: 'Login',
+    success: true,
+    response: 'Successfully logged out',
+  });
 });
 
 module.exports = router;
