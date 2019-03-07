@@ -182,7 +182,7 @@
   
                 <div class="form-group">
                   <label for="my_drivers">My Drivers</label>
-                  <select class="form-control" id="my_drivers">
+                  <select class="form-control" id="my_drivers" name="my_drivers">
                     <option value=<%= settings.nanite.my_drivers[0] %>> <%= settings.nanite.my_drivers[0] %> </option>
                     <option value=<%= settings.nanite.my_drivers[1] %>> <%= settings.nanite.my_drivers[1] %> </option>
                   </select>
@@ -190,7 +190,7 @@
   
                 <div class="form-group">
                   <label for="my_algos">My Algos</label>
-                  <select class="form-control" id="my_algos">
+                  <select class="form-control" id="my_algos" name="my_algos">
                     <option value=<%= settings.nanite.my_algos[0] %>> <%= settings.nanite.my_algos[0] %> </option>
                     <option value=<%= settings.nanite.my_algos[1] %>> <%= settings.nanite.my_algos[1] %> </option>
                   </select>
@@ -221,7 +221,7 @@
   
                 <div class="form-group">
                   <label for="quality">Quality</label>
-                  <select class="form-control" id="quality">
+                  <select class="form-control" id="quality" name="quality">
                     <option value="low" <%if (settings.mapping.quality == 'low') { %> selected <% } %>>Low</option>
                     <option value="medium" <%if (settings.mapping.quality == 'medium') { %> selected <% } %>>Medium</option>
                     <option value="high" <%if (settings.mapping.quality == 'high') { %> selected <% } %>>High</option>

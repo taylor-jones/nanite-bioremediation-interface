@@ -1,8 +1,26 @@
+/* eslint-disable camelcase, import/newline-after-import, object-shorthand */
 const express = require('express');
 const router = express.Router();
+const fs = require('fs');
 const userData = require('../data/users.json');
 const settingsData = require('../data/settings.json');
 const helpers = require('../../app/helpers');
+
+/**
+ * Updates the JSON in settings.json with the contents of
+ * a settings object. First, the object is formatted to JSON
+ * and then it's used to update the entire contents of the JSON
+ * file. NOTE: Make sure you pass the entire settings object
+ * with desired changes.
+ */
+const updateSettingsJson = newSettings => {
+  const json = JSON.stringify(newSettings);
+  fs.writeFile(`${__dirname}/../data/settings.json`, json, (err => {
+    if (err) throw err;
+    console.log('SETTINGS.JSON UPDATED');
+  }));
+};
+
 
 /* GET User Settings page. */
 router.get('/', (req, res, next) => {
@@ -12,14 +30,13 @@ router.get('/', (req, res, next) => {
     return;
   }
 
-  const users = helpers.sanitizeJSON(userData);
-  const user = userData.filter(user => user["user_name"] === uname)[0];
+  const user = userData.filter(u => u.user_name === uname)[0];
   const settings = helpers.sanitizeJSON(settingsData)[user.user_id];
   res.render('settings', {
     title: 'User Settings',
     session: req.session,
     user_name: req.session.user,
-    settings: settings
+    settings: settings,
   });
 });
 
@@ -27,64 +44,61 @@ router.post('/', (req, res, next) => {
   const uname = req.session.user;
   if (uname == null) res.redirect('/login');
 
-  const users = helpers.sanitizeJSON(userData);
-  const user = userData.filter(user => user["user_name"] == uname)[0];
-  let settings = helpers.sanitizeJSON(settingsData)[user.user_id];
+  const user = userData.filter(u => u.user_name === uname)[0];
+  const settings = helpers.sanitizeJSON(settingsData)[user.user_id];
+  const post = req.body;
 
   // set all the settings here
-  settings.user.email = req.body.email;
-  settings.user.code_device = req.body.code_device;
-  settings.user.permanent_code = req.body.permanent_code;
+  settings.user.email = post.email;
+  settings.user.code_device = post.code_device;
+  settings.user.permanent_code = post.permanent_code;
 
-  settings.history.local_count = req.body.local_count;
-  settings.history.local_format = req.body.local_format;
-  settings.history.storage_location = req.body.storage_location;
-  settings.history.download_directory = req.body.download_directory;
+  settings.history.local_count = post.local_count;
+  settings.history.local_format = post.local_format;
+  settings.history.storage_location = post.storage_location;
+  settings.history.download_directory = post.download_directory;
 
-  settings.system.time_zone = req.body.time_zone;
-  settings.system.updates_enables = req.body.updates_enables;
-  settings.system.localization_enabled = req.body.localization_enabled;
+  settings.system.time_zone = post.time_zone;
+  settings.system.updates_enabled = post.updates_enabled === 'on';
+  settings.system.localization_enabled = post.localization_enabled === 'on';
 
-  //parse nanites
-    let naniteSettings = req.body["nanite"];
-    settings.nanite.driver_storage = naniteSettings.driver_storage;
-  /*
-  let driverSettings = naniteSettings.my_drivers;
-  //make string from array
-  let my_drivers = "";
-  driverSettings.forEach(function (item) {
-      my_drivers + item
-      my_drivers + " ";
-  });
-  settings.nanite.my_drivers = my_drivers; */
-  console.log(naniteSettings);
-  settings.nanite.my_drivers = naniteSettings.my_drivers;
-  settings.nanite.my_algos = naniteSettings.my_algos;
+  // parse nanites
+  settings.nanite.my_drivers = post.my_drivers;
+  settings.nanite.my_algos = post.my_algos;
+  settings.nanite.driver_storage = post.driver_storage;
 
-  settings.mapping.gpu = req.body.gpu;
-  settings.mapping.quality = req.body.quality;
-  settings.mapping.color = req.body.color;
+  settings.mapping.gpu = post.gpu === 'on';
+  settings.mapping.quality = post.quality;
+  settings.mapping.color = post.color === 'on';
 
+  // console.log('SETTINGS', settings);
+  // console.log(helpers.sanitizeJSON(req.body));
 
-
-
-
-  console.log(helpers.sanitizeJSON(req.body));
-  //deal with the two arrays and we're done building
+  // TODO: deal with the two arrays and we're done building
 
   // write the json out to the file with the userid
+  // update the settings.json file to include the new settings
+  settingsData[user.user_id] = settings;
+  updateSettingsJson(settingsData);
 
+  // NOTE: ?? we may not actually need to re-render the settings,
+  // since they're already at the last-updated values.
   res.render('settings', {
     title: 'User Settings',
     session: req.session,
     user_name: req.session.user,
-    settings: settings
+    settings: settings,
   });
 });
 
+
+
+// NOTE: I'm not sure what this is here for, but I didn't
+// want to remove it in case you had a plan :)
+
 // I'll stay consistent
 router.put('/updateUserProfile', (req, res) => {
-  //request update on the elements passed in
+  // request update on the elements passed in
 
 });
 // I think 2, only update per field
