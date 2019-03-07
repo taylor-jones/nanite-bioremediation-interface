@@ -71,3 +71,11 @@ If you'd like to serve the app using _forever_, then you can run:
 npm run forever
 ```
 ...and the app will start on [http://localhost:5000](http://localhost:5000)
+
+<br><hr><br>
+
+## Testing
+The app uses [Jest](https://jestjs.io/) for testing. The tests are located in [app/test](https://github.com/taylor-jones/cs361-bioremediation/tree/jest-testing/app/test). To run all tests, run:
+```
+npm run test
+```
