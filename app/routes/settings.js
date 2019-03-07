@@ -46,8 +46,8 @@ router.post('/', (req, res, next) => {
   settings.system.localization_enabled = req.body.localization_enabled;
 
   //parse nanites
-  let naniteSettings = req.body["nanite"];
-  settings.nanite.driver_storage = naniteSettings.driver_storage;
+    let naniteSettings = req.body["nanite"];
+    settings.nanite.driver_storage = naniteSettings.driver_storage;
   /*
   let driverSettings = naniteSettings.my_drivers;
   //make string from array
@@ -57,10 +57,8 @@ router.post('/', (req, res, next) => {
       my_drivers + " ";
   });
   settings.nanite.my_drivers = my_drivers; */
+  console.log(naniteSettings);
   settings.nanite.my_drivers = naniteSettings.my_drivers;
-
-  let my_algos = "";
-
   settings.nanite.my_algos = naniteSettings.my_algos;
 
   settings.mapping.gpu = req.body.gpu;
