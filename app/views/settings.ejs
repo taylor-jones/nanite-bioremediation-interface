@@ -35,33 +35,31 @@
 
 
               <div class="form-group mt-5">
-                <h3 class="mb-3">History Settings</h3>
+              <h3 class="mb-3">History Settings</h3>
+
+              <div class="form-group">
+                <div class="form-group">
+                  <label for="local_count">Deployments Saved Locally</label>
+                  <input type="number" name="local_count" id="local_count" class="form-control" value=<%= settings.history.local_count%> required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="local_format">Deployment Save Format</label>
+                  <input type="text" name="local_format" id="local_format" class="form-control" value=<%= settings.history.local_format %> required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="storage_location">Deployment Save Location</label>
+                  <input type="text" name="storage_location" id="storage_location" class="form-control" value=<%= settings.history.storage_location %> required>
+                </div>
 
                 <div class="form-group">
-                  <div class="form-group">
-                    <label for="local_count">Deployments Saved Locally</label>
-                    <input type="number" name="local_count" id="local_count" class="form-control" value=<%= settings.history.local_count%> required>
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="local_format">Deployment Save Format</label>
-                    <input type="text" name="local_format" id="local_format" class="form-control" value=<%= settings.history.local_format %> required>
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="storage_location">Deployment Save Location</label>
-                    <input type="text" name="storage_location" id="storage_location" class="form-control" value=<%= settings.history.storage_location %> required>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="download_directory">Download Location</label>
-                    <input type="text" name="download_directory" id="download_directory" class="form-control" value=<%= settings.history.download_directory %> required>
-                  </div>
+                  <label for="download_directory">Download Location</label>
+                  <input type="text" name="download_directory" id="download_directory" class="form-control" value=<%= settings.history.download_directory %> required>
                 </div>
               </div>
+            </div>
               
-
-
 
               <div class="form-group mt-5">
                 <h3 class="mb-3">System Settings</h3>
@@ -183,16 +181,18 @@
                 <div class="form-group">
                   <label for="my_drivers">My Drivers</label>
                   <select class="form-control" id="my_drivers" name="my_drivers">
-                    <option value=<%= settings.nanite.my_drivers[0] %>> <%= settings.nanite.my_drivers[0] %> </option>
-                    <option value=<%= settings.nanite.my_drivers[1] %>> <%= settings.nanite.my_drivers[1] %> </option>
+                    <% Object.keys(settings.nanite.my_drivers).forEach(function(d) { %>
+                      <option value=<%= settings.nanite.my_drivers[d] %>> <%= settings.nanite.my_drivers[d] %> </option>
+                    <% }); %>
                   </select>
                 </div>
-  
+
                 <div class="form-group">
                   <label for="my_algos">My Algos</label>
                   <select class="form-control" id="my_algos" name="my_algos">
-                    <option value=<%= settings.nanite.my_algos[0] %>> <%= settings.nanite.my_algos[0] %> </option>
-                    <option value=<%= settings.nanite.my_algos[1] %>> <%= settings.nanite.my_algos[1] %> </option>
+                    <% Object.keys(settings.nanite.my_algos).forEach(function(a) { %>
+                      <option value=<%= settings.nanite.my_algos[a] %>> <%= settings.nanite.my_algos[a] %> </option>
+                    <% }); %>
                   </select>
                 </div>
   
@@ -201,7 +201,6 @@
                   <input type="text" class="form-control" id="driver_storage" name="driver_storage" value=<%= settings.nanite.driver_storage %> required>
                 </div>
               </div>
-
 
 
               <div class="form-group mt-5">
@@ -242,6 +241,7 @@
     </div>
   </div>
 
+  
   <% include partials/pageScripts %>
 </body>
 </html>
