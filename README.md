@@ -75,7 +75,7 @@ npm run forever
 <br><hr><br>
 
 ## Testing
-The app uses [Jest](https://jestjs.io/) for testing. The tests are located in [app/test](https://github.com/taylor-jones/cs361-bioremediation/tree/jest-testing/app/test). 
+The app uses [Jest](https://jestjs.io/) for testing. The tests are located in [app/test](https://github.com/taylor-jones/cs361-bioremediation/tree/master/app/test). 
 First, make sure you have jest installed globally:
 ```
 npm i -g jest
