@@ -14,7 +14,7 @@ const helpers = require('../../app/helpers');
  * with desired changes.
  */
 const updateSettingsJson = newSettings => {
-  const json = JSON.stringify(newSettings);
+  const json = JSON.stringify(newSettings, null, 4);
   fs.writeFile(`${__dirname}/../data/settings.json`, json, (err => {
     if (err) throw err;
     console.log('SETTINGS.JSON UPDATED');
@@ -40,6 +40,8 @@ router.get('/', (req, res, next) => {
   });
 });
 
+
+/** POST USER Settings to settings.json */
 router.post('/', (req, res, next) => {
   const uname = req.session.user;
   if (uname == null) res.redirect('/login');
@@ -63,18 +65,18 @@ router.post('/', (req, res, next) => {
   settings.system.localization_enabled = post.localization_enabled === 'on';
 
   // parse nanites
-  settings.nanite.my_drivers = post.my_drivers;
-  settings.nanite.my_algos = post.my_algos;
+  settings.nanite.my_drivers = helpers.ensureArray(post.my_drivers);
+  settings.nanite.my_algos = helpers.ensureArray(post.my_algos);
   settings.nanite.driver_storage = post.driver_storage;
 
   settings.mapping.gpu = post.gpu === 'on';
   settings.mapping.quality = post.quality;
   settings.mapping.color = post.color === 'on';
 
-  // console.log('SETTINGS', settings);
   // console.log(helpers.sanitizeJSON(req.body));
 
-  // TODO: deal with the two arrays and we're done building
+  // TODO: just need to setup the front-end to allow multiple selection
+  // for my_drivers and my_algos (i think)
 
   // write the json out to the file with the userid
   // update the settings.json file to include the new settings
