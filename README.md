@@ -80,7 +80,7 @@ First, make sure you have jest installed globally:
 ```
 npm i -g jest
 ```
-Then, anytime you want to run the test:
+Then, anytime you want to run the tests:
 ```
 npm run test
 ```
