@@ -80,11 +80,12 @@
               </div>
               <div>
                 <legend>My Drivers</legend>
-                <select id="my-drivers-select">
-                  <% var driver_options = settings.nanite.my_drivers;
-                  for ( var i = 0; i < driver_options.length; i++ ) {
-                    var selected = ( config[0].volume == i ) ? "selected" : "";
-                  %><option value=<%= driver_options[ i ] %> <%= selected %>><%= i %></option><%
+                <select id="my_drivers">
+                  <%var driver_options = settings.nanite.my_drivers;
+                  for ( var i = 0; i < driver_options.length; i++ )
+                  {
+                    var selected = ( config[0].my_drivers == i ) ? "selected" : "";
+                  %><option value="<%=driver_options[ i ] %>" <%=selected %>><%=i %></option><%
                   }
                   %>
                 </select>
