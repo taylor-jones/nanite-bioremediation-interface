@@ -4,6 +4,17 @@
 
 
 /**
+ * Checks if a value is an array. If it's not an arary,
+ * then the function converts it to an array and returns
+ * the array.
+ */
+exports.ensureArray = value => {
+  return Array.isArray(value) ? value : [value];
+};
+
+
+
+/**
  * @name mapObjectKey
  * @param {array} objArr - array of objects
  * @param {string} key - the name of key to map from each object.

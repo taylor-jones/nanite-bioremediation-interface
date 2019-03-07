@@ -1,3 +1,4 @@
+/* eslint-disable camelcase, import/newline-after-import */
 const express = require('express');
 const router = express.Router();
 const userData = require('../data/users.json');
