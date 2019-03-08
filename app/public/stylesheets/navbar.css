@@ -1,0 +1,21 @@
+.navbar-brand {
+    color: dodgerblue !important;
+    text-shadow: 1px 1px 2px rebeccapurple;
+    font-size: 24px;
+}
+
+.menu {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 50px;
+    list-style-type: none;
+}
+
+.menu-item {
+    display: flex;
+    object-fit: contain;
+    width: 50px;
+    margin-top: 25px;
+    margin-left: 5px;
+}
