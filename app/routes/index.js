@@ -4,7 +4,7 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  if (!req.session || !req.session.expires) {
+  if (req.session.user == null) {
     res.render('login', {
       title: 'Login',
     });

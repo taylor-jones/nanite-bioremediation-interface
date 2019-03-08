@@ -3,6 +3,7 @@
   <head>
     <title><%= title %></title>
     <% include partials/pageStyles %>
+    <link rel='stylesheet' href='/stylesheets/index.css' />
   </head>
   <body>
     <% include partials/navbar %>
@@ -11,7 +12,7 @@
     <!-- show a success message if the login was successful -->
     <% if (locals.response && locals.success) { %>
       <div class="container">
-        <div class="row">
+        <div class="row index-wrapper">
           <div class="col">
             <div class="alert alert-success mt-5 show fade">
               <%= response %>

@@ -6,7 +6,16 @@ const helpers = require('../../app/helpers');
 
 /* GET Login page. */
 router.get('/', (req, res, next) => {
-  res.render('login', { title: 'Login' });
+  if (req.session.user != null) {
+    res.render('index', {
+      title: 'Home',
+      success: true,
+      response: 'Login successful!',
+      session: req.session,
+    });
+  } else {
+    res.render('login', {title: 'Login'});
+  }
 });
 
 module.exports = router;
