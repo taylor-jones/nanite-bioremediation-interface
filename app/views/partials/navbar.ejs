@@ -23,18 +23,49 @@
     </div>
   </nav>
 </header>
+
+
 <!-- all menu icons are free for use and come from:
       https://www.iconsdb.com/ -->
+<!-- only show the menu if the user is logged in -->
+<% if (locals.session && locals.session.user) { %>    
 <div class="container">
   <div class="menu fixed-left d-inline-block h-100">
-    <a href="/"><img class="menu-item" src="/images/home.png"></a>
-    <a href="/"><img class="menu-item" src="/images/simulate.png"></a>
-    <a href="/"><img class="menu-item" src="/images/deploy.png"></a>
-    <a href="/"><img class="menu-item" src="/images/nanites.png"></a>
-    <a href="/"><img class="menu-item" src="/images/rogue.png"></a>
-    <a href="/"><img class="menu-item" src="/images/report.png"></a>
-    <a href="/history"><img class="menu-item" src="/images/history.png"></a>
-    <a href="/settings"><img class="menu-item" src="/images/settings.png"></a>
-    <a href="/logout"><img class="menu-item" src="/images/logout.png"></a>
+    <a href="/">
+      <img class="menu-item" src="/images/home.png">
+    </a>
+
+    <a href="#">
+      <img class="menu-item" src="/images/simulate.png">
+    </a>
+
+    <a href="#">
+      <img class="menu-item" src="/images/deploy.png">
+    </a>
+
+    <a href="#">
+      <img class="menu-item" src="/images/nanites.png">
+    </a>
+
+    <a href="#">
+      <img class="menu-item" src="/images/rogue.png">
+    </a>
+
+    <a href="#">
+      <img class="menu-item" src="/images/report.png">
+    </a>
+
+    <a href="/history">
+      <img class="menu-item" src="/images/history.png">
+    </a>
+
+    <a href="/settings">
+      <img class="menu-item" src="/images/settings.png">
+    </a>
+    
+    <a href="/logout" id="menu-logout">
+      <img class="menu-item" src="/images/logout.png">
+    </a>  
   </div>
 </div>
+<% } %>

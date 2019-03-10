@@ -4,6 +4,7 @@ const router = express.Router();
 const userData = require('../data/users.json');
 const helpers = require('../../app/helpers');
 
+
 /* GET Login page. */
 router.get('/', (req, res, next) => {
   if (req.session.user != null) {
@@ -14,11 +15,11 @@ router.get('/', (req, res, next) => {
       session: req.session,
     });
   } else {
-    res.render('login', {title: 'Login'});
+    res.render('login', {
+      title: 'Login',
+    });
   }
 });
-
-module.exports = router;
 
 
 /* process user login attempt */
@@ -35,12 +36,13 @@ router.post('/', (req, res, next) => {
   if (isValidUser) {
     req.session.cookie.maxAge = 60 * 60 * 1000;
     req.session.user = uname;
-    res.render('index', {
-      title: 'Home',
-      success: true,
-      response: 'Login successful!',
-      session: req.session,
-    });
+    // res.render('history', {
+    //   title: 'User History',
+    //   success: true,
+    //   response: 'Login successful!',
+    //   session: req.session,
+    // });
+    res.redirect('settings');
   } else {
     res.render('login', {
       title: 'Login',
@@ -50,3 +52,6 @@ router.post('/', (req, res, next) => {
     });
   }
 });
+
+
+module.exports = router;
