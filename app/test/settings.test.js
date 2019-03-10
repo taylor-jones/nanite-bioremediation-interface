@@ -1,14 +1,12 @@
-
 /* eslint-disable no-undef */
 
 const request = require('supertest');
-// const session = require('express-session');
 const app = require('../app');
+const goodCredentials = { user_name: 'michaelscott', user_password: '#1boss' };
 
 //
 // Test User Settings
 //
-const goodCredentials = { user_name: 'michaelscott', user_password: '#1boss' };
 
 // User Settings
 describe('Test the user settings path', () => {
@@ -17,6 +15,7 @@ describe('Test the user settings path', () => {
       expect(response.statusCode).toBe(302);
     });
   });
+
 
   test('It should open the user settings page when a user session exists', () => {
       return request(app)
@@ -29,5 +28,9 @@ describe('Test the user settings path', () => {
       });
   });
 
+  // it should open the user settings page when a user session does exist.
+
+  // it should update the settings data in settings.json
+  // whenever a user makes a change to the settings page
 
 });

@@ -17,17 +17,6 @@ describe('Test the root path', () => {
 });
 
 
-
-// User History
-describe('Test the user history path', () => {
-  test('It should response the GET method', () => {
-    return request(app).get('/history').then(response => {
-      expect(response.statusCode).toBe(200);
-    });
-  });
-});
-
-
 // Bogus Route
 describe('Test a non-existing path', () => {
   test('It should respond with 404', () => {
