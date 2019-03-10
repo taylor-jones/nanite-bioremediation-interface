@@ -17,25 +17,6 @@ describe('Test the root path', () => {
 });
 
 
-// Login
-describe('Test the login path', () => {
-  test('It should response the GET method', () => {
-    return request(app).get('/login').then(response => {
-      expect(response.statusCode).toBe(200);
-    });
-  });
-});
-
-
-// User Settings
-describe('Test the user settings path', () => {
-  test('It should response the GET method', () => {
-    return request(app).get('/settings').then(response => {
-      expect(response.statusCode).toBe(200);
-    });
-  });
-});
-
 
 // User History
 describe('Test the user history path', () => {
