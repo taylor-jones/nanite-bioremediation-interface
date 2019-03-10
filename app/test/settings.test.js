@@ -8,7 +8,7 @@ const app = require('../app');
 //
 // Test User Settings
 //
-
+const goodCredentials = { user_name: 'michaelscott', user_password: '#1boss' };
 
 // User Settings
 describe('Test the user settings path', () => {
@@ -18,9 +18,16 @@ describe('Test the user settings path', () => {
     });
   });
 
-  // test('It should open the user settings page when a user session exists', () => {
-  //   return request(app).get('/settings').then(response => {
-  //     expect(response.statusCode).toBe(200);
-  //   });
-  // });
+  test('It should open the user settings page when a user session exists', () => {
+      return request(app)
+          .get('/login')
+          .send(goodCredentials).then( response => {
+            request(app).get('/settings').then(response => {
+              expect(response.statusCode).toBe(200);
+
+          });
+      });
+  });
+
+
 });

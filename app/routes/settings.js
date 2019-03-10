@@ -99,15 +99,4 @@ router.post('/', (req, res, next) => {
 });
 
 
-
-// NOTE: I'm not sure what this is here for, but I didn't
-// want to remove it in case you had a plan :)
-
-// I'll stay consistent
-router.put('/updateUserProfile', (req, res) => {
-  // request update on the elements passed in
-
-});
-// I think 2, only update per field
-
 module.exports = router;
