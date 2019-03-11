@@ -1,5 +1,39 @@
 /* eslint-disable space-before-function-paren, prefer-arrow-callback, no-undef, func-names, padded-blocks */
 
+
+/**
+   * shows an alert to the user of a given type with provided text
+   *
+   * @param {string} type - bootstrap alert type class
+   * @param {string} text - the text to display in the alert
+   * @param {duration} number - the length of time to show the alert
+   */
+function showAlert(type, text, duration = -1) {
+  const $alertContainer = $('#alert-container');
+  const renderHTML = `
+    <div class="alert alert-${type}" role="alert">
+      <div class="alert-text">${text}</div>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>  
+    </div>`;
+
+  // update the alert container with the new content
+  // and show the alert.
+  $alertContainer.html(renderHTML);
+  $alertContainer.addClass('show');
+
+  // if a duration was argued, then fade the alert
+  // out after the specified duration
+  if (duration > 0) {
+    setTimeout(function() {
+      $alertContainer.removeClass('show');
+    }, duration);
+  }
+}
+
+
+
 /**
  * NOTE: This file is included in the pageScripts.js EJS partial,
  * so any code here will be present on all pages in the application.
@@ -21,38 +55,6 @@ $(function() {
   //
   // Functions
   //
-
-  /**
-   * shows an alert to the user of a given type with provided text
-   *
-   * @param {string} type - bootstrap alert type class
-   * @param {string} text - the text to display in the alert
-   * @param {duration} number - the length of time to show the alert
-   */
-  function showAlert(type, text, duration = -1) {
-    const $alertContainer = $('#alert-container');
-    const renderHTML = `
-    <div class="alert alert-${type}" role="alert">
-      <div class="alert-text">${text}</div>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>  
-    </div>`;
-
-    // update the alert container with the new content
-    // and show the alert.
-    $alertContainer.html(renderHTML);
-    $alertContainer.addClass('show');
-
-    // if a duration was argued, then fade the alert
-    // out after the specified duration
-    if (duration > 0) {
-      setTimeout(function() {
-        $alertContainer.removeClass('show');
-      }, duration);
-    }
-  }
-
 
 
   /**

@@ -4,6 +4,7 @@
 
 .deployment-container {
   margin-left: 60px;
+  margin-bottom: 120px;
 }
 
 .deployment-wrapper {
@@ -15,12 +16,11 @@
 
 .map-container {
   width: 100%;
-  flex: 3;
-  height: 800px;
+  height: 100%;
+  flex: 5;
   margin-bottom: 30px;
-  max-height: 70vw;
-  max-width: 800px;
 }
+
 
 .map {
   background: url('../images/rome-map.jpg');
@@ -48,17 +48,22 @@
 }
 
 .map-inner {
-  /* height: 50vw;
-  width: 50vw;
-  max-height: 600px;
-  max-width: 600px; */
   height: 90%;
   width: 90%;
   border-radius: 50%;
 }
 
+.map-origin {
+  font-size: 24px;
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  color: red;
+  pointer-events: none;
+}
+
 .stats-container {
-  flex: 1;
+  flex: 3;
   display: flex;
 }
 
@@ -109,11 +114,11 @@
 }
 
 .nanite-inner {
-  width: 20px;
-  height: 20px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   float: left;
-  background: #5dcce7;
+  background: #007bff;
   -webkit-transition: all 0.2s;
   -moz-transition: all 0.2s;
   transition: all 0.2s;
@@ -123,55 +128,40 @@
 }
 
 @-webkit-keyframes pulse {
-  0% {
-    box-shadow: 0 0 8px 6px rgba(93, 204, 231, .5), 0 0 0px 0px transparent, 0 0 0px 0px rgba(93, 204, 231, .7);
-  }
-
+  0% { box-shadow: 0 0 4px 2px rgba(0,123,255, .5), 0 0 0px 0px transparent, 0 0 0px 0px rgba(0,123,255, .7); }
   10% {
     transform: scale(1, 1);
-    box-shadow: 0 0 8px 6px rgba(93, 204, 231, .5), 0 0 12px 10px transparent, 0 0 12px 14px rgba(93, 204, 231, .7);
+    box-shadow: 0 0 4px 2px rgba(0,123,255, .5), 0 0 8px 10px transparent, 0 0 8px 14px rgba(0,123,255, .7);
   }
-
-  100% {
-    box-shadow: 0 0 8px 6px rgba(26, 140, 255, 0), 0 0 0px 40px transparent, 0 0 0px 40px rgba(26, 140, 255, 0);
-  }
+  100% { box-shadow: 0 0 4px 2px rgba(0,123,255, 0), 0 0 0px 24px transparent, 0 0 0px 24px rgba(0,123,255, 0); }
 }
 
 @-moz-keyframes pulse {
-  0% {
-    box-shadow: 0 0 8px 6px rgb(93, 204, 231), 0 0 0px 0px transparent, 0 0 0px 0px rgb(93, 204, 231);
-  }
-
-  10% {
-    box-shadow: 0 0 8px 6px rgb(93, 204, 231), 0 0 12px 10px transparent, 0 0 12px 14px rgb(93, 204, 231);
-  }
-
-  100% {
-    box-shadow: 0 0 8px 6px rgba(26, 140, 255, 0), 0 0 0px 40px transparent, 0 0 0px 40px rgba(26, 140, 255, 0);
-  }
+  0% { box-shadow: 0 0 4px 2px rgb(0,123,255), 0 0 0px 0px transparent, 0 0 0px 0px rgb(0,123,255); }
+  10% { box-shadow: 0 0 4px 2px rgb(0,123,255), 0 0 8px 10px transparent, 0 0 8px 14px rgb(0,123,255); }
+  100% { box-shadow: 0 0 4px 2px rgba(0,123,255, 0), 0 0 0px 24px transparent, 0 0 0px 24px rgba(0,123,255, 0); }
 }
 
 @keyframes pulse {
-  0% {
-    box-shadow: 0 0 8px 6px rgb(93, 204, 231), 0 0 0px 0px transparent, 0 0 0px 0px rgb(93, 204, 231);
-  }
-
-  10% {
-    box-shadow: 0 0 8px 6px rgb(93, 204, 231), 0 0 12px 10px transparent, 0 0 12px 14px rgb(93, 204, 231);
-  }
-
-  100% {
-    box-shadow: 0 0 8px 6px rgba(26, 140, 255, 0), 0 0 0px 40px transparent, 0 0 0px 40px rgba(26, 140, 255, 0);
-  }
+  0% { box-shadow: 0 0 4px 2px rgb(0,123,255), 0 0 0px 0px transparent, 0 0 0px 0px rgb(0,123,255); }
+  10% { box-shadow: 0 0 4px 2px rgb(0,123,255), 0 0 8px 10px transparent, 0 0 8px 14px rgb(0,123,255); }
+  100% { box-shadow: 0 0 4px 2px rgba(0,123,255, 0), 0 0 0px 24px transparent, 0 0 0px 24px rgba(0,123,255, 0); }
 }
 
 
-@media (min-width: 1200px) {
+
+@media (min-width: 992px) {
+  .deployment-container {
+    margin-bottom: 60px;
+  }
+
   .deployment-wrapper {
     flex-direction: row;
   }
 
   .map-container {
+    height: 600px;
+    width: 600px;
     margin-bottom: 0;
   }
 

@@ -18,5 +18,32 @@ router.get('/', (req, res, next) => {
 });
 
 
+router.post('/', (req, res) => {
+  if (req.body) {
+    req.session.deployment = req.body;
+
+    // check if it was a deployment or a recall
+    if (req.body.active) {
+      // deployment
+      res.status(200).send({
+        alert: 'success',
+        message: 'Nanites are begin deployed!',
+      });
+    } else {
+      // recall
+      res.status(200).send({
+        alert: 'success',
+        message: 'Nanites are begin recalled!',
+      });
+    }
+  } else {
+    res.status(500).send({
+      alert: 'danger',
+      message: 'Something has gone wrong...',
+    });
+  }
+});
+
+
 
 module.exports = router;
