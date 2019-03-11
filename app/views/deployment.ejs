@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <% include partials/pageStyles %>
+    <link rel='stylesheet' href='/stylesheets/deployment.css' />
+  </head>
+  <body>
+    <% include partials/navbar %>
+
+    <main>
+      <div class="container">
+        <div class="deployment-container">
+          <h1 class="page-title">Deployment & Tracking</h1>
+          
+            <div class="deployment-wrapper">
+              <div class="map-container">
+                <div class="map">
+                  <div class="map-inner">
+                  
+                  <!-- Credit to https://codepen.io/asistapl/pen/pwwQBY for the rader idea -->
+                  <svg viewBox="0 0 370 370">
+                    <g id="radar-bg"></g>
+                    <path id="radar-pattern" opacity="0.15" fill="none" stroke="#fff" stroke-width="2" stroke-miterlimit="10" d="M308.5,185c0,68.21-55.29,123.5-123.5,123.5S61.5,253.21,61.5,185S116.79,61.5,185,61.5S308.5,116.79,308.5,185z M185,114.5c-38.94,0-70.5,31.56-70.5,70.5s31.56,70.5,70.5,70.5s70.5-31.56,70.5-70.5S223.94,114.5,185,114.5z"/>
+                    <image overflow="visible" opacity="0.8" width="700" height="700" id="radar-gradient" xlink:href="/images/radar-angle.png"  transform="matrix(0.5 0 0 0.5 10 10)">
+                    </image>
+                    <g id="radar-icons" fill="#fff"></g>
+                    <circle id="radar-radius" opacity="0.1" fill="#fff" cx="185" cy="185" r="45.67"/>
+                    <circle id="radar-stem" fill="#fff" cx="185" cy="185" r="17.33"/>
+                    <line id="radar-hand" fill="none" stroke="#fff" stroke-width="3" stroke-miterlimit="10" x1="185" y1="185" x2="185" y2="10"/>
+                  </svg>
+              
+                  <div class="nanites">
+                    <div class="nanite">
+                      <div class="nanite-inner"></div>
+                    </div>
+                    <div class="nanite">
+                      <div class="nanite-inner"></div>
+                    </div>
+                    <div class="nanite">
+                      <div class="nanite-inner"></div>
+                    </div>
+                    <div class="nanite">
+                      <div class="nanite-inner"></div>
+                    </div>
+                    <div class="nanite">
+                      <div class="nanite-inner"></div>
+                    </div>
+                  </div>
+                  
+                  </div>
+                </div>
+              </div>
+      
+              <div class="stats-container">
+                <div class="stats">
+                  <h3>Overview</h3>
+                  <div class="stats-summary">
+                    <div>Deployment State: <span id="deployment-state">inactive</span></div>
+                    <div>Total Deployed: <span id="nanites-deployed">0</span></div>
+                    <div>Total Rogue: <span id="nanites-rogue">0</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+          
+    <div class="actions-container">
+      <button class="btn btn-light" id="deploy">Deploy</button>
+      <button class="btn btn-danger" id="recall">Recall</button>
+    </div>
+    
+    <% include partials/pageScripts %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+    <script src="javascripts/deployment.js"></script>
+  </body>
+</html>
