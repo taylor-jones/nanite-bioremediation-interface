@@ -18,5 +18,10 @@
 		"user_id": 4,
 		"user_name": "dwightschrute",
 		"user_password": "beets"
-	}
+  }, 
+  {
+		"user_id": 5,
+		"user_name": "demo",
+		"user_password": "demo"
+  }
 ]

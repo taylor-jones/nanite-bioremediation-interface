@@ -131,5 +131,37 @@
             ],
             "driver_storage": "C:\\Users\\Dwight\\Minions\\drivers"
         }
+    },
+    "5": {
+        "user": {
+            "email": "demo@demo.demo",
+            "code_device": "Demo Device",
+            "permanent_code:": "demoCode"
+        },
+        "history": {
+            "local_count": 1,
+            "local_format": "XML",
+            "storage_location": "C:\\Users\\Demo\\Demo\\history",
+            "download_directory": "C:\\Users\\Demo\\Downloads"
+        },
+        "system": {
+            "time_zone": 0,
+            "updates_enabled": true,
+            "localization_enabled": false
+        },
+        "mapping": {
+            "gpu": true,
+            "quality": "low",
+            "color": true
+        },
+        "nanite": {
+            "my_drivers": [
+                "demo-nanite"
+            ],
+            "my_algos": [
+                "demo-swarm"
+            ],
+            "driver_storage": "C:\\Users\\Demo\\Demo\\drivers"
+        }
     }
 }
