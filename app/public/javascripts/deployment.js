@@ -10,6 +10,8 @@ $(function() {
     deployNanites(deploymentData.nanites, false);
   }
 
+  let progressInterval = null;
+  clearInterval(progressInterval);
 
   // Cache DOM elements
   const $radius = $('#radar-radius');
@@ -122,6 +124,9 @@ $(function() {
    * trigger the process of simulating recalling of all nanites
    */
   function recallNanites(withInterval = true) {
+    clearInterval(progressInterval);
+    progressInterval = null;
+
     const count = Number($nanitesDeployed.text());
     let curr = count + 1;
 
@@ -149,6 +154,35 @@ $(function() {
 
 
   /**
+   * Watches the progress of the deployment, waiting until the task
+   * is 100% complete. At that point, it will trigger a recall of the nanites.
+   */
+  function watchDeployment() {
+    let percentDone = 0;
+
+    const updateCompletion = () => {
+      // give completion a 20% chance to increse.
+      if (randInt(4) === 0) {
+        percentDone += 1;
+        $deploymentCompletion.text(percentDone);
+      }
+    };
+
+    progressInterval = setInterval(function() {
+      console.log('watching');
+
+      if (percentDone < 100) {
+        updateCompletion();
+      } else {
+        clearInterval(progressInterval);
+        progressInterval = null;
+        requestStateChange('recall', Number($nanitesDeployed.text()));
+      }
+    }, 200);
+  }
+
+
+  /**
    * Updates the UI to reflect a specified nanite deployment state.
    */
   function updateDeployedState(state) {
@@ -166,11 +200,13 @@ $(function() {
 
     } else if (state === 'active') {
       $deploymentState.text('Active');
-      $deploymentCompletion.text(randInt(100));
+      $deploymentCompletion.text(0);
       $deploymentStateParent.addClass('list-group-item-success');
 
       $deploy.addClass('disabled');
       $recall.removeClass('disabled');
+
+      watchDeployment();
 
     } else if (state === 'inactive') {
       $deploymentState.text('Inactive');
