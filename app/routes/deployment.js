@@ -13,6 +13,7 @@ router.get('/', (req, res, next) => {
     res.render('deployment', {
       title: 'Deployment',
       session: req.session,
+      deployment: req.session.deployment,
     });
   }
 });

@@ -87,6 +87,12 @@
     </div>
     
     <% include partials/pageScripts %>
+
+    <!-- make deployment data available to client-side js -->
+    <script>
+      const deploymentData = <%- JSON.stringify(deployment) %>
+    </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
     <script src="javascripts/deployment.js"></script>
   </body>
