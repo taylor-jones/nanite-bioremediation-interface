@@ -32,56 +32,34 @@
                       <line id="radar-hand" fill="none" stroke="#fff" stroke-width="3" stroke-miterlimit="10" x1="185" y1="185" x2="185" y2="10"/>
                     </svg>
                 
-                    <div class="nanites">
-                      <div class="nanite">
-                        <div class="nanite-inner"></div>
-                      </div>
-                      <div class="nanite">
-                        <div class="nanite-inner"></div>
-                      </div>
-                      <div class="nanite">
-                        <div class="nanite-inner"></div>
-                      </div>
-                      <div class="nanite">
-                        <div class="nanite-inner"></div>
-                      </div>
-                      <div class="nanite">
-                        <div class="nanite-inner"></div>
-                      </div>
-                    </div>
-                  
-
+                    <div class="nanites"></div>
                     <div class="map-origin">⚑</div>
+
                   </div>
                 </div>
               </div>
       
               <!-- stats -->
-              <div class="stats-container">
+              <div class="stats-container card">
                 <div class="stats">
                   <div class="stats-summary">
-                    <h3>Overview</h3>
-                    <% if (session.deployment) { %>
-                      <div>Deployment State: <span id="deployment-state">In Progress</span></div>
-                      <div>Completion: <span id="deployment-completion">0</span>%</div>
-                      <div>Total Deployed: <span id="nanites-deployed">0</span></div>
-                      <div>Total Rogue: <span id="nanites-rogue">0</span></div>
-                    <% } else { %>
-                      <div>Deployment State: <span id="deployment-state">inactive</span></div>
-                      <div>Total Deployed: <span id="nanites-deployed">0</span></div>
-                      <div>Total Rogue: <span id="nanites-rogue">0</span></div>
-                    <% } %>
+                    <div class="card-header lead">Overview</div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">Deployment State: <span id="deployment-state"></span></li>
+                      <li class="list-group-item">Percent Complete: <span id="deployment-completion"></span></li>
+                      <li class="list-group-item">Total Deployed: <span id="nanites-deployed"></span></li>
+                      <li class="list-group-item">Total Rogue: <span id="nanites-rogue"></span></li>
+                    </ul>
                   </div>
                 </div>
               </div>
-
 
             </div>
           </div>
         </div>
       </main>
           
-    <div class="actions-container">
+    <div class="actions-container bg-dark">
       <button class="btn btn-light" id="deploy">Deploy</button>
       <button class="btn btn-danger" id="recall">Recall</button>
     </div>

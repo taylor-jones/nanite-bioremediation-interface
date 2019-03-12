@@ -2,6 +2,10 @@
 
 
 /**
+ * NOTE: Functions placed before the IIFE will be available to other JS files.
+ */
+
+/**
    * shows an alert to the user of a given type with provided text
    *
    * @param {string} type - bootstrap alert type class
@@ -33,6 +37,15 @@ function showAlert(type, text, duration = -1) {
 }
 
 
+/**
+ * Returns an random integer between 0 and a given max value
+ * @param {int} maxValue - the max allowed random number to be generated.
+ */
+function randInt(maxValue) {
+  return Math.floor(Math.random() * Math.floor(maxValue));
+}
+
+
 
 /**
  * NOTE: This file is included in the pageScripts.js EJS partial,
@@ -55,16 +68,6 @@ $(function() {
   //
   // Functions
   //
-
-
-  /**
-   * Returns an random integer between 0 and a given max value
-   * @param {int} maxValue - the max allowed random number to be generated.
-   */
-  function randInt(maxValue) {
-    return Math.floor(Math.random() * Math.floor(maxValue));
-  }
-
 
   /**
    * Processes a request to logout by calling a GET request

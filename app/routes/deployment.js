@@ -24,17 +24,33 @@ router.post('/', (req, res) => {
     req.session.deployment = req.body;
 
     // check if it was a deployment or a recall
-    if (req.body.active) {
+    if (req.body.action === 'deploy') {
       // deployment
       res.status(200).send({
-        alert: 'success',
-        message: 'Nanites are begin deployed!',
+        alert: 'warning',
+        message: `<h5 class="alert-heading">Deploying!</h5>
+          <p class="mb-0">Nanites are being deployed to the target location.</p>`,
       });
-    } else {
+    } else if (req.body.action === 'recall') {
       // recall
       res.status(200).send({
+        alert: 'warning',
+        message: `<h5 class="alert-heading">Recalling!</h5>
+          <p class="mb-0">Nanites are being recalled to their point-of-origin.</p>`,
+      });
+    } else if (req.body.action === 'active') {
+      // active
+      res.status(200).send({
         alert: 'success',
-        message: 'Nanites are begin recalled!',
+        message: `<h5 class="alert-heading">Success!</h5>
+          <p class="mb-0">All nanites have been deployed.</p>`,
+      });
+    } else if (req.body.action === 'inactive') {
+      // inactive
+      res.status(200).send({
+        alert: 'success',
+        message: `<h5 class="alert-heading">Success!</h5>
+          <p class="mb-0">All nanites have been recalled.</p>`,
       });
     }
   } else {
