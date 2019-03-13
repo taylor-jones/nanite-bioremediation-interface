@@ -64,7 +64,6 @@ $(function() {
   let logoutInterval;
 
 
-
   //
   // Functions
   //
@@ -90,9 +89,7 @@ $(function() {
 
 
 
-  //
-  // Events
-  //
+  /**  Events **/
 
   // right away, make sure the alert container exists on every page
   $body.append(`<!-- response alert -->
@@ -108,7 +105,60 @@ $(function() {
    * Process the logout
    */
   $logoutButton.click(function(e) {
-    e.preventDefault();
+      e.preventDefault();
+
+      // don't process the logout attempt if another
+      // logout is already in progress.
+      if (logoutInterval) return;
+
+      // show an alet dialog user to confirm exit
+
+      $('#alert-container').addClass('show');
+
+      let logoutAlert = function() {};
+      logoutAlert.warning = function(callback) {
+          showAlert('danger', `
+            <h4 class="alert-heading">Logout Warning</h4>
+            <p>You have requested to logout from the system, it is possible there are active nanites out in the field.
+                Exiting will initiate recalling of all active nanites, please confirm if you wish to continue&hellip;</p>
+            <hr> 
+            <button type="button" class="btn btn-light" id="cancelBtn">Cancel</button>
+            <button type="button" class="btn btn-secondary" id="confirmBtn">Continue to logout</button>
+            `, 0);
+
+          //listeners for buttons
+          document.getElementById("cancelBtn").addEventListener("click", function (e) {
+              e.preventDefault();
+              console.log("click on cancel");
+              callback(false);
+              $("#alert-container").alert('close');
+          });
+
+
+          document.getElementById("confirmBtn").addEventListener("click", function (e) {
+              e.preventDefault();
+              console.log("click on confirm");
+              callback(true);
+              $("#alert-container").alert('close');
+          });
+
+      };
+
+      // callback
+      logoutAlert.warning(function(confirm){
+          if(confirm){
+              console.log("clicked to continue");
+              startRecallProcess();
+          }else{
+              console.log("clicked to cancel logout");
+              cancelLogout();
+          }
+      });
+  });
+
+
+
+function startRecallProcess() {
 
     // don't process the logout attempt if another
     // logout is already in progress.
@@ -136,36 +186,49 @@ $(function() {
       $recalled.text(curr);
     };
 
-    // increment the timeout counter
-    logoutInterval = setInterval(function() {
-      if (curr < naniteCount) {
-        incrementCurrentCount();
-      } else {
-        clearInterval(logoutInterval);
-        logoutInterval = null;
+      // increment the timeout counter
+      logoutInterval = setInterval(function() {
+          if (curr < naniteCount) {
+              incrementCurrentCount();
+          } else {
+              clearInterval(logoutInterval);
+              logoutInterval = null;
 
-        // fade out the waning alert
-        setTimeout(function() {
-          $('#alert-container').removeClass('show');
-        }, 500);
+              // fade out the waning alert
+              setTimeout(function() {
+                  $('#alert-container').removeClass('show');
+              }, 500);
 
-        // Indicate that all nanites have been recalled.
-        setTimeout(function() {
-          $('#alert-container').addClass('show');
-          showAlert('success', `
+              // Indicate that all nanites have been recalled.
+              setTimeout(function() {
+                  $('#alert-container').addClass('show');
+                  showAlert('success', `
             <h4 class="alert-heading">All Done!</h4>
             <p>All deployed nanites have been recalled and powered off.</p>
             <hr>
             <p>You are now being logged out.</p>
             `, 3500);
 
-          // then process the actual logout
-          setTimeout(function() {
-            processLogout();
-          }, 4000);
-        }, 1000);
-      }
-    }, (5000 / naniteCount));
-  });
+                  // then process the actual logout
+                  setTimeout(function() {
+                      processLogout();
+                  }, 4000);
+              }, 1000);
+          }
+      }, (5000 / naniteCount));
+
+  }
+
+    function cancelLogout() {
+        setTimeout(function () {
+            $('#alert-container').addClass('show');
+            showAlert('info', `
+            <h4 class="alert-heading">Logout cancelled</h4>
+            <p>Power is still on. All nanites remain at latest location</p>
+            <hr>
+            <p>You have cancelled logout process</p>
+            `, 4200);
+        });
+    }
 
 });
