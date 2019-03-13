@@ -1,23 +1,20 @@
 /* eslint-disable space-before-function-paren, prefer-arrow-callback, no-undef, func-names, padded-blocks */
 
-$(function() {
-  const $body = $('body');
-  const $logoutButton = $('#menu-logout');
-  let intervalId;
 
-  //
-  // Functions
-  //
+/**
+ * NOTE: Functions placed before the IIFE will be available to other JS files.
+ */
 
-  /**
-   * shows an alert to the user
+/**
+   * shows an alert to the user of a given type with provided text
+   *
    * @param {string} type - bootstrap alert type class
    * @param {string} text - the text to display in the alert
    * @param {duration} number - the length of time to show the alert
    */
-  function showAlert(type, text, duration = -1) {
-    const $alertContainer = $('#alert-container');
-    const renderHTML = `
+function showAlert(type, text, duration = -1) {
+  const $alertContainer = $('#alert-container');
+  const renderHTML = `
     <div class="alert alert-${type}" role="alert">
       <div class="alert-text">${text}</div>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -25,27 +22,52 @@ $(function() {
       </button>  
     </div>`;
 
-    // $alertContainer.removeClass('show');
-    $alertContainer.html(renderHTML);
-    $alertContainer.addClass('show');
+  // update the alert container with the new content
+  // and show the alert.
+  $alertContainer.html(renderHTML);
+  $alertContainer.addClass('show');
 
-    if (duration > 0) {
-      setTimeout(function() {
-        $alertContainer.removeClass('show');
-      }, duration);
-    }
+  // if a duration was argued, then fade the alert
+  // out after the specified duration
+  if (duration > 0) {
+    setTimeout(function() {
+      $alertContainer.removeClass('show');
+    }, duration);
   }
+}
+
+
+/**
+ * Returns an random integer between 0 and a given max value
+ * @param {int} maxValue - the max allowed random number to be generated.
+ */
+function randInt(maxValue) {
+  return Math.floor(Math.random() * Math.floor(maxValue));
+}
 
 
 
-  /**
-   * Returns an random integer between 0 and a given max value
-   * @param {int} maxValue - the max allowed random number to be generated.
-   */
-  function randInt(maxValue) {
-    return Math.floor(Math.random() * Math.floor(maxValue));
-  }
+/**
+ * NOTE: This file is included in the pageScripts.js EJS partial,
+ * so any code here will be present on all pages in the application.
+ * If you're writing JS for a specific page, consider creating a new
+ * JS file and linking the page directly to that JS file rather than
+ * including that code everywhere.
+ */
 
+$(function() {
+  //
+  // Variables
+  //
+  const $body = $('body');
+  const $logoutButton = $('#menu-logout');
+  let logoutInterval;
+
+
+
+  //
+  // Functions
+  //
 
   /**
    * Processes a request to logout by calling a GET request
@@ -57,14 +79,13 @@ $(function() {
     fetch('/logout', {
       method: 'GET',
       redirect: 'follow',
-    })
-      .then((response) => {
-        if (response.status === 200) {
-          window.location = '/login';
-        } else {
-          showAlert('danger', 'Something went wrong...');
-        }
-      });
+    }).then((response) => {
+      if (response.status === 200) {
+        window.location = '/login';
+      } else {
+        showAlert('danger', 'Something went wrong...');
+      }
+    });
   }
 
 
@@ -73,7 +94,7 @@ $(function() {
   // Events
   //
 
-  // make sure the alert container exists on every page
+  // right away, make sure the alert container exists on every page
   $body.append(`<!-- response alert -->
   <div id="alert-container" class="container fade show">
     <div class="row">
@@ -83,12 +104,15 @@ $(function() {
   </div>`);
 
 
+  /**
+   * Process the logout
+   */
   $logoutButton.click(function(e) {
     e.preventDefault();
 
     // don't process the logout attempt if another
     // logout is already in progress.
-    if (intervalId) return;
+    if (logoutInterval) return;
 
     // show the initial nanite recall count
     const updateRecallCount = (curr, total) => {
@@ -113,12 +137,12 @@ $(function() {
     };
 
     // increment the timeout counter
-    intervalId = setInterval(function() {
+    logoutInterval = setInterval(function() {
       if (curr < naniteCount) {
         incrementCurrentCount();
       } else {
-        clearInterval(intervalId);
-        intervalId = null;
+        clearInterval(logoutInterval);
+        logoutInterval = null;
 
         // fade out the waning alert
         setTimeout(function() {
@@ -142,7 +166,6 @@ $(function() {
         }, 1000);
       }
     }, (5000 / naniteCount));
-
   });
 
 });

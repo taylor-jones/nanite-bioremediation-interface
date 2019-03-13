@@ -9,6 +9,7 @@ const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
 const historyRouter = require('./routes/history');
 const settingsRouter = require('./routes/settings');
+const deploymentRouter = require('./routes/deployment');
 
 const app = express();
 
@@ -28,11 +29,43 @@ app.use(session({
 }));
 
 
+//
 // routes
+//
+
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/history', historyRouter);
 app.use('/settings', settingsRouter);
+app.use('/deployment', deploymentRouter);
+
+
+//
+// locals
+//
+
+/**
+ * Helper function that allows for more concise if-and-only-if
+ * style conditional within EJS.
+ *
+ * @param {bool} condition expression that results in a boolean
+ * @param {any} value the value to apply if the condition is true
+ *
+ * @example <div class="<% if(condition){ %>selected<% } %>">Test</div>
+ */
+app.locals.iif = (condition, value) => {
+  if (condition) return value;
+  return '';
+};
+
+
+/**
+ * Helper function that returns a value between 0 and a given number.
+ * @param {number} ceiling the highest allowed random value to return
+ */
+app.locals.randInt = ceiling => {
+  return Math.floor(Math.random() * Math.floor(ceiling));
+};
 
 
 // catch 404 and forward to error handler
