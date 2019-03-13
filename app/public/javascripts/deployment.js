@@ -193,8 +193,8 @@ $(function() {
       $deploymentCompletion.text(0);
       $deploymentStateParent.addClass('list-group-item-warning');
 
-      $deploy.addClass('disabled');
-      $recall.addClass('disabled');
+      $deploy.addClass('disabled').prop('disabled', true);
+      $recall.addClass('disabled').prop('disabled', true);
 
       deployNanites(randInt(15));
 
@@ -203,8 +203,8 @@ $(function() {
       $deploymentCompletion.text(0);
       $deploymentStateParent.addClass('list-group-item-success');
 
-      $deploy.addClass('disabled');
-      $recall.removeClass('disabled');
+      $deploy.addClass('disabled').prop('disabled', true);
+      $recall.removeClass('disabled').prop('disabled', false);
 
       watchDeployment();
 
@@ -214,15 +214,15 @@ $(function() {
       $nanitesDeployed.text('0');
       $nanitesRogue.text('0');
 
-      $deploy.removeClass('disabled');
-      $recall.addClass('disabled');
+      $deploy.removeClass('disabled').prop('disabled', false);
+      $recall.addClass('disabled').prop('disabled', true);
 
     } else if (state === 'recall') {
       $deploymentState.text('Recalling');
       $deploymentStateParent.addClass('list-group-item-warning');
 
-      $deploy.addClass('disabled');
-      $recall.addClass('disabled');
+      $deploy.addClass('disabled').prop('disabled', true);
+      $recall.addClass('disabled').prop('disabled', true);
 
       recallNanites();
     }
