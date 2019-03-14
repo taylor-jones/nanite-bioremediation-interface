@@ -7,6 +7,7 @@ const session = require('express-session');
 
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
+const updateRouter = require('./routes/update');
 const historyRouter = require('./routes/history');
 const settingsRouter = require('./routes/settings');
 const deploymentRouter = require('./routes/deployment');
@@ -35,6 +36,7 @@ app.use(session({
 
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
+app.use('/update', updateRouter);
 app.use('/history', historyRouter);
 app.use('/settings', settingsRouter);
 app.use('/deployment', deploymentRouter);

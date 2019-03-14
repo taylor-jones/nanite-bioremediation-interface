@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <% include partials/pageStyles %>
+    <link rel='stylesheet' href='/stylesheets/login.css' />
+</head>
+
+<body>
+<% include partials/navbar %>
+
+<div class="container">
+    <div class="login-wrapper">
+        <div class="login-box">
+            <div class="row">
+                <h2>Update from v<%= version %> to v<%= newVersion %></h2>
+                <form action="/update" method="POST">
+                    <fieldset>
+                        <div class="form-group mt-5">
+                            <button class="btn btn-lg btn-primary btn-block" id="login" type="submit">Update</button>
+                        </div>
+                    </fieldset>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<% include partials/pageScripts %>
+</body>
+</html>
