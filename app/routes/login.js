@@ -37,7 +37,7 @@ router.post('/', (req, res, next) => {
     req.session.cookie.maxAge = 60 * 60 * 1000;
     req.session.user = uname;
     req.session.deployment = null;
-    res.redirect('settings');
+    res.redirect('update');
   } else {
     res.render('login', {
       title: 'Login',
