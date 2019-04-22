@@ -1,6 +1,6 @@
-# CS 361 - Bioremediation
+# Nanite Bioremediation Interface
 
-This repository stores the project files for the CS 361 Bioremediation group project at Oregon State University.
+This repository stores the project files for the Nanite Bioremediation software engineering group project at Oregon State University.
 
 
 ## What's in it?
